@@ -28,19 +28,42 @@ public class MainMenu extends JFrame {
         add(buttonPanel, BorderLayout.CENTER);
 
         for (int i = 1; i <= 8; i++) {
-            JButton button = new JButton("Button " + i);
-
-            System.out.println("test1");
+            JButton button = new JButton();
+            button.setFont(new Font("Arial", Font.PLAIN, 25));
 
             switch (i) {
-                case 1 -> button.addActionListener(e -> new ButtonListener(this, Subject.THAI));
-                case 2 -> button.addActionListener(e -> new ButtonListener(this, Subject.MATH));
-                case 3 -> button.addActionListener(e -> new ButtonListener(this, Subject.BIOLOGY));
-                case 4 -> button.addActionListener(e -> new ButtonListener(this, Subject.CHEMISTRY));
-                case 5 -> button.addActionListener(e -> new ButtonListener(this, Subject.PHYSIC));
-                case 6 -> button.addActionListener(e -> new ButtonListener(this, Subject.SOCIAL));
-                case 7 -> button.addActionListener(e -> new ButtonListener(this, Subject.COMPUTER));
-                case 8 -> button.addActionListener(e -> new ButtonListener(this, Subject.ENGLISH));
+                case 1 -> {
+                    button.setText(Subject.THAI.getDisplayName());
+                    button.addActionListener(new ButtonListener(this, Subject.THAI));
+                }
+                case 2 -> {
+                    button.setText(Subject.MATH.getDisplayName());
+                    button.addActionListener(new ButtonListener(this, Subject.MATH));
+                }
+                case 3 -> {
+                    button.setText(Subject.BIOLOGY.getDisplayName());
+                    button.addActionListener(new ButtonListener(this, Subject.BIOLOGY));
+                }
+                case 4 -> {
+                    button.setText(Subject.CHEMISTRY.getDisplayName());
+                    button.addActionListener(new ButtonListener(this, Subject.CHEMISTRY));
+                }
+                case 5 -> {
+                    button.setText(Subject.PHYSIC.getDisplayName());
+                    button.addActionListener(new ButtonListener(this, Subject.PHYSIC));
+                }
+                case 6 -> {
+                    button.setText(Subject.SOCIAL.getDisplayName());
+                    button.addActionListener(new ButtonListener(this, Subject.SOCIAL));
+                }
+                case 7 -> {
+                    button.setText(Subject.COMPUTER.getDisplayName());
+                    button.addActionListener(new ButtonListener(this, Subject.COMPUTER));
+                }
+                case 8 -> {
+                    button.setText(Subject.ENGLISH.getDisplayName());
+                    button.addActionListener(new ButtonListener(this, Subject.ENGLISH));
+                }
             }
 
             buttonPanel.add(button);
@@ -62,9 +85,7 @@ public class MainMenu extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            System.out.println("EEEEEE");
-
-            parent.setContentPane(new SubjectMenu(subject).getContentPane());
+            parent.setContentPane(new SubjectMenu(parent, subject).getContentPane());
             parent.repaint();
             parent.revalidate();
         }
